@@ -17,16 +17,16 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	printoctal_hexval(int octal, int r)
+void	print_hexval(int uchr, int r)
 {
 	char	b[16] = "0123456789abcdef";
 
 	if (r == 2)
-		printoctal_hexval(octal / 16, r - 1);
-	ft_putchar(b[octal % 16]);
+		print_hexval(uchr / 16, r - 1);
+	ft_putchar(b[uchr % 16]);
 }
 
-void	printoctal_chrval(const unsigned char d)
+void	print_chrval(const unsigned char d)
 {
 	unsigned char	c = d;
 
@@ -50,7 +50,7 @@ void	print_memory(const void	*addr, size_t size)
 	{
 		while (i < j && i < size)
 		{
-			printoctal_hexval(data[i], 2);
+			print_hexval(data[i], 2);
 			i++;
 			if (i % 2 == 0)
 				ft_putchar(' ');
@@ -66,7 +66,7 @@ void	print_memory(const void	*addr, size_t size)
 		i = i - 16;
 		while (i < j && i < size)
 		{
-			printoctal_chrval(data[i]);
+			print_chrval(data[i]);
 			i++;
 		}
 		j = j + 16;
